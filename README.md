@@ -4,13 +4,13 @@ Simple demonstration to show why gambling is BAD
 ## Background: Markov Chain (Markov Process)
 What is Markov Chain?
 
-The ["Oxford Languages"](https://languages.oup.com/google-dictionary-en/) define the term as "a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event."
+The ["Oxford Languages"](https://languages.oup.com/google-dictionary-en/) defines the term as "a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event."
 
 The concept can be easily understood with a simple example.
 
 ### Example
 
-Suppose there are only two states in our weather system: sunny days and rainy days. And also assume that the prospect of tomorrow's weather soley depends on today's weather. So the weather two days ago nor yesterday has no say in predicting tomorrow's weather. Only today's weather is what matters. Also, let's assume the probability does not change. For example, if sunny weather today leads to a rainy day tommorrow for 60% of chance, this probability holds in predicting weathers in other days. Then we can say the weather system follows Markov Chain or Markov Process. (Of course in reality the weather system does not follow Markov Process though).
+Suppose there are only two states in our weather system: sunny days and rainy days. And also assume that the prospect of tomorrow's weather soley depends on today's weather. So the weather two days ago nor yesterday have no say in predicting tomorrow's weather. Only today's weather is what matters. Also, let's assume the probability does not change. For example, if sunny weather today leads to a rainy day tommorrow for 60% of chance, this probability holds in predicting weathers in other days. Then we can say the weather system follows Markov Chain or Markov Process. (Of course in reality this is not the case).
 
 
 Let's say, sunny day is followed by sunny day tommorrow with 40% of probability and rainy day is followed by rainy day tommorrow with 55% of probability.
@@ -61,11 +61,11 @@ $$
 
 The probability of having sunny day after three days when today is sunny is about 42.85%.
 
-*One takeaway here is that Markov Process is "memoryless": This is previous states does not affect subsequent states. What only matters is the current state. This trait is represented in assumption that the proabilities are constant throughout the process.*
+*One takeaway here is that Markov Process is "memoryless": This means previous states does not affect subsequent states. What only matters in predicting the next state is the current state. This property is represented in assuming that the proabilities are constant throughout the process.*
 
 ## Ok. Then What is "The Gambler's Ruin"?
 
-The Gambler's Ruin problem is a simple thought experiment showing how difficult for gamblers to win a game in even a very favorable scenario given significant difference in capital between a gambler and the casino, which is often true. This is illustrated with the concept of Markov Chain.
+The Gambler's Ruin problem is a simple thought experiment showing how difficult for gamblers to win a game in even a very favorable scenario given significant size difference in capital between a gambler and the casino, which is often true. This is illustrated with the concept of Markov Chain.
 
 #### Rules
 
@@ -84,7 +84,9 @@ The transition diagram and the transition matrix are then expressed as below:
 
 ![schematics](trainsitiondiag2.png)
 
-Rows are the current state and columns are the next state.
+If the gambler loses all money then the game stops. So at 0 there is no more transition. It stays zero. The same goes for 1,100.
+
+The above can be expressed in matrix as well. Rows are the current state and columns are the next state.
 
 $$
 P = \begin{array}{c|ccccc}
@@ -113,9 +115,9 @@ $$
 P_i = 0.5 P_{i+1} + 0.5 P_{i-1} \\ s.t. \ P_0 = 0,\ P_{1100} = 1
 $$
 
-P_0 and P_{1100} is 1, because when either one of them is bankrupt no further bet is made. In other cases, P_i = (probability of losing a bet) * P_{i+1} + (probability of winning a bet) * P_{i-1}.
+$P_0$ and $P_{1100}$ is 1, because when either one of them is bankrupt no further bet is made. In other cases, $P_i$ = (probability of losing a bet) * $P_{i+1}$ + (probability of winning a bet) * $P_{i-1}$.
 
-We can solve this and obtain P_k where k is 0, 1, ... , 1100.
+We can solve this and obtain $P_k$ where k is 0, 1, ... , 1100.
 
 $$
 \begin{align}
@@ -154,7 +156,7 @@ $$
 \end{align}
 $$
 
-Solving P_k we get:
+Solving $P_k$ we get:
 
 $$
 \begin{align}
@@ -166,9 +168,9 @@ $$
 \end{align}
 $$
 
-#### conclusion
+#### Conclusion
 
-So the probability that a gambler beats the casino holding 1,000 dollars with 100 dollars is $\frac{100}{1,100}$ even with very favorable assumption that he wins each bet with 50% probability.\
+So the probability that a gambler beats the casino holding 1,000 dollars with 100 dollars is $\frac{100}{1,100}$ even with very favorable assumption that he wins each bet with 50% probability.
 
 What usually happens in real life is the gap in resources is a lot more huge and the probability is a lot less favorable.
 
@@ -192,3 +194,5 @@ plot_gambler_ruin(gambler_money, casino_money, win_probability)
 The result, which differs everytime you run the function, will look like this:
 
 ![schematics](SimExample.png)
+
+In this simulation, the gambler lost all the money after 1750+ bets.
