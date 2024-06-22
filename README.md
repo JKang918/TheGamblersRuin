@@ -92,7 +92,7 @@ $$
 P = \begin{array}{c|ccccc}
    & \text{0} & \text{1} & \text{2} & \cdots & \text{1099} & \text{1100} \\
 \hline
-\text{0} & 1 & .5 & \cdots & 0 & 0 \\
+\text{0} & 1 & .5 & \cdots & 0 & 0 & 0\\
 \text{1} & .5 & 0 & 0.5 &\cdots & 0 & 0 \\
 \text{2} & 0 & 0.5 & 0  & \cdots & 0 & 0 \\
 \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
