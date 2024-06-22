@@ -20,7 +20,7 @@ The above can be then easily represented with what are called, "transition diagr
 
 #### Transition Diagram
 
-![schematics](transitiondiag.png)
+![schematics](trainsitiondiag.png)
 
 
 #### Transition Matrix
@@ -82,7 +82,7 @@ From the gamblers perspective, if he wins 1,000 bets straight and eventually hol
 
 The transition diagram and the transition matrix are then expressed as below:
 
-![schematics](transitiondiag2.png)
+![schematics](trainsitiondiag2.png)
 
 Rows are the current state and columns are the next state.
 
